@@ -1,4 +1,6 @@
-package main.classes
+package main.interfaces
+
+import main.classes.Person8
 
 fun main(){
     val provider = BasicInfoProvider3()
@@ -19,4 +21,10 @@ interface PersonInfoProvider3{
 class BasicInfoProvider3 : PersonInfoProvider3 {
     override val providerInfo: String
     get() = "Basic Info provider"
+
+    //we can override and use properties inside interface
+    override fun printDetails(person: Person8) {
+        super.printDetails(person)
+        println("additional print statement")
+    }
 }

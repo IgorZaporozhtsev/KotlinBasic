@@ -1,4 +1,6 @@
-package main.classes
+package main.interfaces
+
+import main.classes.Person8
 
 fun main(){
     val provider = BasicInfoProvider2()

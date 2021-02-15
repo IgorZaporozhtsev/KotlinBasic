@@ -19,7 +19,7 @@ fun mainIf1(){
 
 fun mainIf2(){
     greeting = "Wow"
-    //val greetingToPrint = if (greeting != null) greeting else "Boom"
-    val greetingToPrint = greeting ?: "Boom" // Wow we can change in this way
+    val greetingToPrint = if (greeting != null) greeting else "Boom"
+    //val greetingToPrint = greeting ?: "Boom" // Wow we can change in this way
     println(greetingToPrint)
 }

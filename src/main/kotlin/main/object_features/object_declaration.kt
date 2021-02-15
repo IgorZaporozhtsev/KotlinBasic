@@ -2,12 +2,12 @@ package main.object_features
 
 //object declaration
 fun main(){
-    val entity = EntityFactory.create()
+    val entity = EntityFactory2.create()
     println(entity)
 }
 
 
-object EntityFactory{
+object EntityFactory2{
     fun create() = Entity2("id", "name");
 }
 

@@ -2,10 +2,14 @@ package main.syntax
 
 val name = "Nate";
 var greeting: String? = null
+val things = listOf("zero", "one", "two")
 
 fun main(){
 //    mainIf1()
     mainIf2()
+
+    // Contains
+    if ("two" in things) println(true)
 }
 
 fun mainIf1(){
@@ -23,3 +27,6 @@ fun mainIf2(){
     //val greetingToPrint = greeting ?: "Boom" // Wow we can change in this way
     println(greetingToPrint)
 }
+
+
+

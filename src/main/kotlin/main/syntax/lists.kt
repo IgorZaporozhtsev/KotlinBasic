@@ -21,4 +21,7 @@ fun main(){
     val carsMap = mutableMapOf("VW" to "Polo", "VW" to "Golf")
     carsMap.putIfAbsent("VW", "Jetta");
 
+    //5 contains
+    if ("two" in things) println(true)
+
 }

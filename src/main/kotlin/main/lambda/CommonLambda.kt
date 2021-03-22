@@ -39,7 +39,7 @@ fun main() {
 
     val whetherAllYoungerThenFifty = heroes.all { it.age > 50 }
     println("whetherAllYoungerThenFifty: $whetherAllYoungerThenFifty")
-
+//
     val isAnyFemale = heroes.any { it.gender == Gender.FEMALE }
     println("anyFemale: $isAnyFemale")
 }

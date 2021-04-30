@@ -39,9 +39,22 @@ fun main() {
 
     val whetherAllYoungerThenFifty = heroes.all { it.age > 50 }
     println("whetherAllYoungerThenFifty: $whetherAllYoungerThenFifty")
-//
+
     val isAnyFemale = heroes.any { it.gender == Gender.FEMALE }
     println("anyFemale: $isAnyFemale")
+
+    val mapByAge: Map<Int, List<Hero>> = heroes.groupBy { it.age }
+    val (age, group) = mapByAge.maxByOrNull { (_, group) -> group.size }!!
+    println("age: $age - group: $group" )
+
+    val mapByName: Map<String, Hero> = heroes.associateBy { it.name }
+    val ageFr = mapByName["Frenchy"]?.age                      // null
+    mapByName.getValue("Frenchy").age // throw
+    println("$ageFr")
+
+    val mapByName2 = heroes.associateBy { it.name }
+    val unknownHero = Hero("Unknown", 0, null)
+    mapByName2.getOrElse("unknown") { unknownHero }.age
 }
 
 

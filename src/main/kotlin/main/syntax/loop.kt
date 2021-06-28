@@ -68,6 +68,28 @@ fun main(){
         println(ch + 1)
     }
 
+    //12 iterate with last index
+    println("#12")
+    val arr = arrayOf("0","1","2","3","4","5","6")
+    for (i in 0..arr.lastIndex){
+        val info = arr[i].split("*")
+        print(info)
+    }
+
+    //13 iterate with size
+    println("#13")
+    for (i in 0..arr.size){
+        val info = arr[i].split("*")
+        print(info)
+    }
+
+    //13 iterate with indices
+    println("#`14")
+    for (i in arr.indices){
+        val info = arr[i].split("*")
+        print(info)
+    }
+
 
 
 }

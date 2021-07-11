@@ -2,10 +2,13 @@ package main.lambda
 
 fun main() {
     val heroes = listOf(
-        Hero("The Captain", 60, Gender.MALE),
+        Hero("The Captain", 10, Gender.MALE),
+        Hero("The Captain", 25, Gender.MALE),
+        Hero("The Captain", 5, Gender.MALE),
         Hero("Frenchy", 42, Gender.MALE),
         Hero("The Kid", 9, null),
-        Hero("Lady Lauren", 29, Gender.FEMALE),
+        Hero("Lady Lauren", 11, Gender.FEMALE),
+        Hero("Lady Lauren", 11, Gender.FEMALE),
         Hero("First Mate", 29, Gender.MALE),
         Hero("Sir Stephen", 37, Gender.FEMALE)
     )
@@ -45,16 +48,28 @@ fun main() {
 
     val mapByAge: Map<Int, List<Hero>> = heroes.groupBy { it.age }
     val (age, group) = mapByAge.maxByOrNull { (_, group) -> group.size }!!
-    println("age: $age - group: $group" )
+    println("age: $age - group: $group")
 
     val mapByName: Map<String, Hero> = heroes.associateBy { it.name }
     val ageFr = mapByName["Frenchy"]?.age                      // null
     mapByName.getValue("Frenchy").age // throw
     println("$ageFr")
 
-    val mapByName2 = heroes.associateBy { it.name }
-    val unknownHero = Hero("Unknown", 0, null)
-    mapByName2.getOrElse("unknown") { unknownHero }.age
+
+//    val keyOfSumResult =
+//        heroes.associate { Pair(it.age, it) }.mapValues { Hero(it.value.name, it.value.age, it.value.gender) }
+
+//    val heroesList  =
+//        heroes.groupBy { it.name }.mapValues { it -> it.value.sumBy { it.age } }.entries
+
+    val values = heroes.groupBy { it.name }
+        .mapValues { it.value.reduce { acc, hero -> acc.copy(age = acc.age + hero.age) } }.values
+
+//    val unknownHero = Hero("Unknown", 0, null)
+//    keyOfSumResult.getOrElse("unknown") { unknownHero }
 }
 
-
+public inline fun <T, K> Grouping<T, K>.sumBy(
+    selector: (T) -> Int
+): Map<K, Int> =
+    fold(0) { acc, element -> acc + selector(element) }
